@@ -1,0 +1,433 @@
+/* ===== GLOBAL STYLES & RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --deep-blue: #0A2F44; /* Warna Utama Poster */
+    --gold: #FFD700;
+    --paper-brown: #E5C38D; /* Warna Kertas Lusuh */
+    --dark-wood: #4A2E1A;
+    --white: #ffffff;
+    --text-dark: #222;
+    
+    --font-pirate: 'Pirata One', cursive;
+    --font-main: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--dark-wood);
+    font-family: var(--font-main);
+    color: var(--white);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Efek Kertas Tua di Seluruh Web */
+.paper-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('https://www.transparenttextures.com/patterns/old-map.png'); /* Pola Peta Tua */
+    opacity: 0.15;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgba(10, 47, 68, 0.9); /* Transparan Blue */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--gold);
+}
+
+nav .logo {
+    font-family: var(--font-pirate);
+    font-size: 2.5rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+}
+
+nav .logo span {
+    color: var(--white);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 600;
+    transition: color 0.3s;
+    font-size: 1.1rem;
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+/* ===== HERO SECTION ===== */
+header {
+    height: 100vh;
+    /* Ganti URL ini dengan background Peta/Kayu One Piece Anda jika ada */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(10, 47, 68, 0.9)), url('https://i.ibb.co/hCRNf5y/one-piece-bg.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 100px; /* offset nav */
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-hat {
+    width: 120px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+header h1 {
+    font-family: var(--font-pirate);
+    font-size: 4rem;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 0 var(--deep-blue), 5px 5px 0 var(--gold);
+}
+
+header p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    color: #e0e0e0;
+}
+
+/* TOMBOL PIRATE ANIMASI */
+.btn-pirate {
+    display: inline-block;
+    padding: 15px 40px;
+    background: var(--gold);
+    color: var(--deep-blue);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    font-family: var(--font-pirate);
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+.btn-pirate:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: var(--white);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* ===== FEATURES SECTION ===== */
+.features {
+    padding: 100px 0;
+    background: url('https://www.transparenttextures.com/patterns/dark-wood.png'); /* Tekstur Kayu */
+    background-color: #3d2514;
+}
+
+.section-title {
+    font-family: var(--font-pirate);
+    text-align: center;
+    font-size: 3.5rem;
+    color: var(--gold);
+    margin-bottom: 60px;
+    text-shadow: 2px 2px 0 var(--deep-blue);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background: rgba(10, 47, 68, 0.5); /* Blue Transparant */
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid #1a4a66;
+    transition: transform 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+    background: rgba(10, 47, 68, 0.8);
+}
+
+/* Efek Kilatan Emas saat Hover */
+.feature-card::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,215,0,0.1), transparent);
+    transform: rotate(45deg);
+    transition: 0.5s;
+}
+.feature-card:hover::after {
+    left: 100%;
+}
+
+.gold-icon {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--white);
+}
+
+.feature-card p {
+    font-weight: 300;
+    line-height: 1.7;
+    color: #ccc;
+}
+
+/* ===== PRICELIST SECTION (GAYA POSTER) ===== */
+.pricelist-section {
+    padding: 100px 0;
+    background-color: var(--deep-blue);
+    background-image: url('https://i.ibb.co/xD6F4zV/strawhat.png'); /* Gambar Strawhat pudar di bg */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
+    background-attachment: fixed;
+}
+
+/* Bingkai seperti kertas buronan */
+.wanteed-border {
+    background-color: var(--paper-brown);
+    background-image: url('https://www.transparenttextures.com/patterns/old-map.png');
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5), inset 0 0 50px rgba(139, 90, 43, 0.5);
+    border: 15px solid #c49b65; /* Bingkai Kayu pudar */
+    border-image: url('https://i.ibb.co/V3X45W2/wood-border.png') 30 stretch; /* Jika ada gambar bingkai kayu */
+    color: var(--text-dark);
+}
+
+.pricelist-header {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 3px double var(--dark-wood);
+    padding-bottom: 20px;
+}
+
+.pricelist-header h1 {
+    font-family: var(--font-pirate);
+    font-size: 4.5rem;
+    letter-spacing: 5px;
+    color: var(--dark-wood);
+}
+
+.trx-status {
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+.trx-status i { color: #27ae60; } /* Hijau Centang */
+
+.price-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.price-column h3 {
+    font-family: var(--font-pirate);
+    font-size: 2.2rem;
+    background-color: var(--dark-wood);
+    color: var(--gold);
+    padding: 10px 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.best-seller-col h3 {
+    border: 2px solid var(--gold);
+}
+
+.price-column ul {
+    list-style: none;
+}
+
+.price-column li {
+    font-size: 1.1rem;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.price-column li:hover {
+    transform: translateX(5px);
+    font-weight: 600;
+}
+
+.price-column li i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.best-seller-col li i { color: var(--deep-blue); }
+.other-col li i { color: #7f8c8d; }
+
+.price-column li.dll {
+    font-weight: 700;
+    color: #c0392b; /* Merah Marun */
+    border-bottom: none;
+}
+
+/* ===== FOOTER SECTIONS ===== */
+footer {
+    padding: 80px 0 20px 0;
+    background: url('https://www.transparenttextures.com/patterns/black-twill.png');
+    background-color: #111;
+    border-top: 5px solid var(--gold);
+    position: relative;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.footer-box h3 {
+    font-family: var(--font-pirate);
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 0 var(--white);
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--white);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.contact-link i {
+    font-size: 2rem;
+    margin-right: 15px;
+}
+
+.telegram { background-color: #229ED9; }
+.telegram:hover { background-color: #1a7fa8; }
+
+.whatsapp { background-color: #25D366; color: #fff; }
+.whatsapp:hover { background-color: #1da851; }
+
+.testimonials {
+    text-align: center;
+    position: relative;
+}
+
+.testi-btn {
+    display: block;
+    padding: 20px;
+    background-color: var(--white);
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: 2px solid var(--text-dark);
+    transition: all 0.3s;
+    margin-bottom: 20px;
+}
+
+.testi-btn:hover {
+    background-color: var(--deep-blue);
+    color: var(--white);
+    border-color: var(--gold);
+}
+
+.footer-chest {
+    width: 80px;
+    margin-top: 10px;
+    /* Animasi Harta Karun Goyang */
+    animation: wobble 3s infinite;
+}
+
+@keyframes wobble {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+}
+
+/* ===== RESPONSIVE DESIGN (MOBILE) ===== */
+@media (max-width: 768px) {
+    nav { padding: 15px 20px; }
+    nav .logo { font-size: 2rem; }
+    .nav-links { display: none; } /* Sembunyikan nav di mobile untuk kesederhanaan */
+
+    header h1 { font-size: 2.5rem; }
+    header p { font-size: 1rem; }
+
+    .price-grid, .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .wanteed-border { padding: 20px; }
+    .pricelist-header h1 { font-size: 3rem; }
+}
